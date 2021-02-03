@@ -1,7 +1,7 @@
 const { TextEncoder, TextDecoder } = require('util');
 import { ec } from 'elliptic';
 
-import { createInitialTypes, Type, SerialBuffer } from '../arisenjs-serialize';
+import { createInitialTypes, Type, SerialBuffer } from '../arisensdk-serialize';
 
 describe('Serialize', () => {
     let types: Map<string, Type>;

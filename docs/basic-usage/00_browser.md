@@ -7,14 +7,14 @@ To use `arisensdk` in a browser run `npm run build-web` or `yarn build-web`.  Th
 <script src='dist-web/arisensdk-jssig.min.js'></script>
 ```
 
-To cache ABIs and reduce network usage, reuse the `api` object for all transactions.  This implies you should only call `new arisenjs_api.Api(...)` once.
+To cache ABIs and reduce network usage, reuse the `api` object for all transactions.  This implies you should only call `new arisensdk_api.Api(...)` once.
 ```html
 <script>
   let pre = document.getElementsByTagName('pre')[0];
   const defaultPrivateKey = "5JtUScZK2XEp3g9gh7F8bwtPTRAkASmNrrftmx4AxDKD5K4zDnr"; // bob
-  const rpc = new arisenjs_jsonrpc.JsonRpc('http://localhost:8888');
-  const signatureProvider = new arisenjs_jssig.JsSignatureProvider([defaultPrivateKey]);
-  const api = new arisenjs_api.Api({ rpc, signatureProvider });
+  const rpc = new arisensdk_jsonrpc.JsonRpc('http://localhost:8888');
+  const signatureProvider = new arisensdk_jssig.JsSignatureProvider([defaultPrivateKey]);
+  const api = new arisensdk_api.Api({ rpc, signatureProvider });
 
   (async () => {
     try {
@@ -40,7 +40,7 @@ To cache ABIs and reduce network usage, reuse the `api` object for all transacti
       pre.textContent += '\n\nTransaction pushed!\n\n' + JSON.stringify(result, null, 2);
     } catch (e) {
       pre.textContent = '\nCaught exception: ' + e;
-      if (e instanceof arisenjs_jsonrpc.RpcError)
+      if (e instanceof arisensdk_jsonrpc.RpcError)
         pre.textContent += '\n\n' + JSON.stringify(e.json, null, 2);
     }
   })();

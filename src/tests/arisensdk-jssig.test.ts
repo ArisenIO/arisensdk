@@ -1,9 +1,9 @@
 import {ec} from 'elliptic';
 
-import {generateKeyPair, PrivateKey, PublicKey, sha256, Signature} from '../arisenjs-key-conversions';
-import {digestFromSerializedData, JsSignatureProvider} from '../arisenjs-jssig';
-import {KeyType} from '../arisenjs-numeric';
-import {SignatureProviderArgs} from '../arisenjs-api-interfaces';
+import {generateKeyPair, PrivateKey, PublicKey, sha256, Signature} from '../arisensdk-key-conversions';
+import {digestFromSerializedData, JsSignatureProvider} from '../arisensdk-jssig';
+import {KeyType} from '../arisensdk-numeric';
+import {SignatureProviderArgs} from '../arisensdk-api-interfaces';
 
 describe('JsSignatureProvider', () => {
     const privateKeys = [

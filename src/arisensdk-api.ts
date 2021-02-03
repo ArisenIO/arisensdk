@@ -13,16 +13,16 @@ import {
     CachedAbi,
     SignatureProvider,
     TransactConfig
-} from './arisenjs-api-interfaces';
-import { JsonRpc } from './arisenjs-jsonrpc';
+} from './arisensdk-api-interfaces';
+import { JsonRpc } from './arisensdk-jsonrpc';
 import {
     Abi,
     GetInfoResult,
     PushTransactionArgs,
     GetBlockHeaderStateResult,
     GetBlockResult
-} from './arisenjs-rpc-interfaces';
-import * as ser from './arisenjs-serialize';
+} from './arisensdk-rpc-interfaces';
+import * as ser from './arisensdk-serialize';
 
 const abiAbi = require('../src/abi.abi.json');
 const transactionAbi = require('../src/transaction.abi.json');

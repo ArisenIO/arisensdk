@@ -6,8 +6,8 @@ import {
     KeyType,
     signatureToString,
     stringToSignature,
-} from './arisenjs-numeric';
-import { constructElliptic, PublicKey } from './arisenjs-key-conversions';
+} from './arisensdk-numeric';
+import { constructElliptic, PublicKey } from './arisensdk-key-conversions';
 
 /** Represents/stores a Signature and provides easy conversion for use with `elliptic` lib */
 export class Signature {

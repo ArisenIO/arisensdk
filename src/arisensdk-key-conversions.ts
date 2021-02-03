@@ -1,6 +1,6 @@
 import {ec as EC} from 'elliptic';
 import * as hash from 'hash.js';
-import {KeyType} from './arisenjs-numeric';
+import {KeyType} from './arisensdk-numeric';
 import { PublicKey } from './PublicKey';
 import { PrivateKey } from './PrivateKey';
 

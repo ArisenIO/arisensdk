@@ -5,8 +5,8 @@ import {
     privateKeyToLegacyString,
     privateKeyToString,
     stringToPrivateKey,
-} from './arisenjs-numeric';
-import { constructElliptic, PublicKey, Signature } from './arisenjs-key-conversions';
+} from './arisensdk-numeric';
+import { constructElliptic, PublicKey, Signature } from './arisensdk-key-conversions';
 
 /** Represents/stores a private key and provides easy conversion for use with `elliptic` lib */
 export class PrivateKey {

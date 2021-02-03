@@ -15,9 +15,9 @@
             * 4) cleos create account alice publicKey
             */
         
-            const rpc = new arisenjs_jsonrpc.JsonRpc('http://localhost:8888');
-            const signatureProvider = new arisenjs_jssig.JsSignatureProvider([privateKey, r1PrivateKey]);
-            const api = new arisenjs_api.Api({ rpc, signatureProvider });
+            const rpc = new arisensdk_jsonrpc.JsonRpc('http://localhost:8888');
+            const signatureProvider = new arisensdk_jssig.JsSignatureProvider([privateKey, r1PrivateKey]);
+            const api = new arisensdk_api.Api({ rpc, signatureProvider });
         
             const EXECUTING = 'Executing Test', SUCCESS = 'Success', FAILED = 'Failed';
             let resultsLabel, transactionResponse, transactionSignatures, failedAsPlanned;
@@ -281,7 +281,7 @@
                 try {
                     await rpcShouldFail();
                 } catch (e) {
-                    if (e instanceof arisenjs_jsonrpc.RpcError) {
+                    if (e instanceof arisensdk_jsonrpc.RpcError) {
                         resultsLabel.className = "success";
                         resultsLabel.innerText = SUCCESS;
                         return true;

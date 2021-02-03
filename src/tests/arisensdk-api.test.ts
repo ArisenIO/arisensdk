@@ -1,7 +1,7 @@
 const { TextEncoder, TextDecoder } = require('util');
-import { Api } from '../arisenjs-api';
-import { JsonRpc } from '../arisenjs-jsonrpc';
-import { JsSignatureProvider } from '../arisenjs-jssig';
+import { Api } from '../arisensdk-api';
+import { JsonRpc } from '../arisensdk-jsonrpc';
+import { JsSignatureProvider } from '../arisensdk-jssig';
 
 const transaction = {
     expiration: '2018-09-04T18:42:49',

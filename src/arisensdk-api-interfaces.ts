@@ -3,7 +3,7 @@
  * copyright defined in arisensdk/LICENSE.txt
  */
 
-import { Abi, PushTransactionArgs } from './arisenjs-rpc-interfaces';
+import { Abi, PushTransactionArgs } from './arisensdk-rpc-interfaces';
 
 /** Arguments to `getRequiredKeys` */
 export interface AuthorityProviderArgs {

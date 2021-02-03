@@ -5,8 +5,8 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable jsdoc/check-indentation */
 
-import * as numeric from './arisenjs-numeric';
-import { Abi, BlockTaposInfo, BlockHeaderStateTaposInfo } from './arisenjs-rpc-interfaces';
+import * as numeric from './arisensdk-numeric';
+import { Abi, BlockTaposInfo, BlockHeaderStateTaposInfo } from './arisensdk-rpc-interfaces';
 
 /** A field in an abi */
 export interface Field {

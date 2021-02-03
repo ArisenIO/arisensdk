@@ -5,13 +5,13 @@
 
 import { ec } from 'elliptic';
 
-import { SignatureProvider, SignatureProviderArgs } from './arisenjs-api-interfaces';
+import { SignatureProvider, SignatureProviderArgs } from './arisensdk-api-interfaces';
 import {
     PrivateKey,
     PublicKey,
     Signature,
-} from './arisenjs-key-conversions';
-import { convertLegacyPublicKey } from './arisenjs-numeric';
+} from './arisensdk-key-conversions';
+import { convertLegacyPublicKey } from './arisensdk-numeric';
 
 /** expensive to construct; so we do it once and reuse it */
 const defaultEc = new ec('secp256k1') as any;

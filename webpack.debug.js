@@ -2,10 +2,10 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        arisenjs_api: './src/arisensdk-api.ts',
-        arisenjs_jsonrpc: './src/rpc-web.ts',
-        arisenjs_jssig: './src/arisensdk-jssig.ts',
-        arisenjs_numeric: './src/arisensdk-numeric.ts',
+        arisensdk_api: './src/arisensdk-api.ts',
+        arisensdk_jsonrpc: './src/rpc-web.ts',
+        arisensdk_jssig: './src/arisensdk-jssig.ts',
+        arisensdk_numeric: './src/arisensdk-numeric.ts',
     },
     devtool: 'inline-source-map',
     mode: 'development',

@@ -3,9 +3,9 @@
  */
 // copyright defined in arisensdk/LICENSE.txt
 
-import { SignatureProvider, SignatureProviderArgs } from './arisenjs-api-interfaces';
-import * as ser from './arisenjs-serialize';
-import * as numeric from './arisenjs-numeric';
+import { SignatureProvider, SignatureProviderArgs } from './arisensdk-api-interfaces';
+import * as ser from './arisensdk-serialize';
+import * as numeric from './arisensdk-numeric';
 import { ec } from 'elliptic';
 
 /** Signs transactions using WebAuthn */

@@ -3,12 +3,12 @@ const ecc = require('arisensdk-ecc');
 
 const { ec } = require('elliptic');
 
-const { Signature, PrivateKey, PublicKey, sha256 } = require('../arisenjs-key-conversions');
+const { Signature, PrivateKey, PublicKey, sha256 } = require('../arisensdk-key-conversions');
 const {
     JsSignatureProvider,
-} = require('../arisenjs-jssig');
-const { KeyType } = require('../arisenjs-numeric');
-const { SignatureProviderArgs } = require('../arisenjs-api-interfaces');
+} = require('../arisensdk-jssig');
+const { KeyType } = require('../arisensdk-numeric');
+const { SignatureProviderArgs } = require('../arisensdk-api-interfaces');
 
 describe('JsSignatureProvider', () => {
     const privateKeys = [
@@ -152,20 +152,20 @@ describe('JsSignatureProvider', () => {
             const dataAsString = 'some string';
 
             const eccHashedString = Buffer.from(ecc.sha256(dataAsString), 'hex');
-            const arisenjsHashedStringAsBuffer = Buffer.from(sha256(dataAsString), 'hex');
-            expect(eccHashedString).toEqual(arisenjsHashedStringAsBuffer);
+            const arisensdkHashedStringAsBuffer = Buffer.from(sha256(dataAsString), 'hex');
+            expect(eccHashedString).toEqual(arisensdkHashedStringAsBuffer);
 
             const eccSig = ecc.sign(dataAsString, KPriv, 'utf8');
 
-            const arisenjsSig = Signature.fromString(eccSig);
+            const arisensdkSig = Signature.fromString(eccSig);
             const recoveredKPub = ecc.recover(eccSig, dataAsString, 'utf8');
-            const arisenjsRecoveredKPub = arisenjsSig.recover(dataAsString, true, 'utf8');
+            const arisensdkRecoveredKPub = arisensdkSig.recover(dataAsString, true, 'utf8');
 
-            expect(arisenjsRecoveredKPub.toLegacyString()).toEqual(recoveredKPub);
-            expect(arisenjsRecoveredKPub.toString()).toEqual(k1FormatPublicKeys[idx]);
+            expect(arisensdkRecoveredKPub.toLegacyString()).toEqual(recoveredKPub);
+            expect(arisensdkRecoveredKPub.toString()).toEqual(k1FormatPublicKeys[idx]);
 
-            const arisenjsValid = arisenjsSig.verify(dataAsString, arisenjsRecoveredKPub, true, 'utf8');
-            expect(arisenjsValid).toEqual(true);
+            const arisensdkValid = arisensdkSig.verify(dataAsString, arisensdkRecoveredKPub, true, 'utf8');
+            expect(arisensdkValid).toEqual(true);
         }
     });
 
@@ -176,17 +176,17 @@ describe('JsSignatureProvider', () => {
 
             const dataAsString = 'some string';
 
-            const arisenjsHashedStringAsBuffer = Buffer.from(sha256(dataAsString), 'hex');
+            const arisensdkHashedStringAsBuffer = Buffer.from(sha256(dataAsString), 'hex');
 
-            const arisenjsSig = privateKey.sign(arisenjsHashedStringAsBuffer, false, 'utf8');
-            const arisenjsSigAsString = arisenjsSig.toString();
+            const arisensdkSig = privateKey.sign(arisensdkHashedStringAsBuffer, false, 'utf8');
+            const arisensdkSigAsString = arisensdkSig.toString();
 
-            const recoveredKPub = ecc.recover(arisenjsSigAsString, dataAsString, 'utf8');
-            const arisenjsRecoveredKPub = arisenjsSig.recover(dataAsString, true, 'utf8');
-            expect(arisenjsRecoveredKPub.toLegacyString()).toEqual(recoveredKPub);
-            expect(arisenjsRecoveredKPub.toString()).toEqual(k1FormatPublicKeys[idx]);
+            const recoveredKPub = ecc.recover(arisensdkSigAsString, dataAsString, 'utf8');
+            const arisensdkRecoveredKPub = arisensdkSig.recover(dataAsString, true, 'utf8');
+            expect(arisensdkRecoveredKPub.toLegacyString()).toEqual(recoveredKPub);
+            expect(arisensdkRecoveredKPub.toString()).toEqual(k1FormatPublicKeys[idx]);
 
-            const eccValid = ecc.verify(arisenjsSigAsString, dataAsString, recoveredKPub, 'utf8');
+            const eccValid = ecc.verify(arisensdkSigAsString, dataAsString, recoveredKPub, 'utf8');
             expect(eccValid).toEqual(true);
         }
     });

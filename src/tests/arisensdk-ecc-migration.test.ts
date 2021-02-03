@@ -1,7 +1,7 @@
 const ecc = require('arisensdk-ecc');
-import { ecc as eccMigration } from '../arisenjs-ecc-migration';
+import { ecc as eccMigration } from '../arisensdk-ecc-migration';
 
-import { PrivateKey } from '../arisenjs-key-conversions';
+import { PrivateKey } from '../arisensdk-key-conversions';
 
 describe('ecc Migration', () => {
     const privateKeys = [

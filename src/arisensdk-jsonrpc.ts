@@ -3,8 +3,8 @@
  */
 // copyright defined in arisensdk/LICENSE.txt
 
-import { AbiProvider, AuthorityProvider, AuthorityProviderArgs, BinaryAbi } from './arisenjs-api-interfaces';
-import { base64ToBinary, convertLegacyPublicKeys } from './arisenjs-numeric';
+import { AbiProvider, AuthorityProvider, AuthorityProviderArgs, BinaryAbi } from './arisensdk-api-interfaces';
+import { base64ToBinary, convertLegacyPublicKeys } from './arisensdk-numeric';
 import {
     GetAbiResult,
     GetBlockResult,
@@ -13,8 +13,8 @@ import {
     GetRawCodeAndAbiResult,
     PushTransactionArgs,
     GetBlockHeaderStateResult
-} from './arisenjs-rpc-interfaces';
-import { RpcError } from './arisenjs-rpcerror';
+} from './arisensdk-rpc-interfaces';
+import { RpcError } from './arisensdk-rpcerror';
 
 const arrayToHex = (data: Uint8Array) => {
     let result = '';
