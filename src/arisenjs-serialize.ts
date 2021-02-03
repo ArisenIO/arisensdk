@@ -1,12 +1,12 @@
 /**
  * @module Serialize
  */
-// copyright defined in eosjs/LICENSE.txt
+// copyright defined in arisensdk/LICENSE.txt
 /* eslint-disable max-classes-per-file */
 /* eslint-disable jsdoc/check-indentation */
 
-import * as numeric from './eosjs-numeric';
-import { Abi, BlockTaposInfo, BlockHeaderStateTaposInfo } from './eosjs-rpc-interfaces';
+import * as numeric from './arisenjs-numeric';
+import { Abi, BlockTaposInfo, BlockHeaderStateTaposInfo } from './arisenjs-rpc-interfaces';
 
 /** A field in an abi */
 export interface Field {
@@ -558,7 +558,7 @@ export class SerialBuffer {
 
 /** Is this a supported ABI version? */
 export const supportedAbiVersion = (version: string) => {
-    return version.startsWith('eosio::abi/1.');
+    return version.startsWith('arisen::abi/1.');
 };
 
 const checkDateParse = (date: string) => {

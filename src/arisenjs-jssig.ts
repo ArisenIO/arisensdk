@@ -1,17 +1,17 @@
 /**
  * @module JS-Sig
  */
-// copyright defined in eosjs/LICENSE.txt
+// copyright defined in arisensdk/LICENSE.txt
 
 import { ec } from 'elliptic';
 
-import { SignatureProvider, SignatureProviderArgs } from './eosjs-api-interfaces';
+import { SignatureProvider, SignatureProviderArgs } from './arisenjs-api-interfaces';
 import {
     PrivateKey,
     PublicKey,
     Signature,
-} from './eosjs-key-conversions';
-import { convertLegacyPublicKey } from './eosjs-numeric';
+} from './arisenjs-key-conversions';
+import { convertLegacyPublicKey } from './arisenjs-numeric';
 
 /** expensive to construct; so we do it once and reuse it */
 const defaultEc = new ec('secp256k1') as any;

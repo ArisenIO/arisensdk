@@ -4,8 +4,8 @@ about: Create a report to help us improve
 
 ---
 
-**Version of EOSJS**
-_which version of eosjs exhibits the issue_
+**Version of ARISENSDK**
+_which version of arisensdk exhibits the issue_
 
 **Describe the bug**
 A clear and concise description of what the bug is.

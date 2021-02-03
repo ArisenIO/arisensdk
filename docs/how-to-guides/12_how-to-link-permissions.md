@@ -1,4 +1,4 @@
-To link an existing permission, [submit a transaction](01_how-to-submit-a-transaction.md) to the [`linkauth`](https://github.com/EOSIO/eosio.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/eosio.bios/include/eosio.bios/eosio.bios.hpp#L240) action of the `eosio` account.
+To link an existing permission, [submit a transaction](01_how-to-submit-a-transaction.md) to the [`linkauth`](https://github.com/ARISENIO/arisen.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/arisen.bios/include/arisen.bios/arisen.bios.hpp#L240) action of the `arisen` account.
 
 In the example shown below `useraaaaaaaa` links the permission `action_perm` to the contract `useraaaaaaaa`'s `contract_action` action.
 ```javascript
@@ -12,7 +12,7 @@ const linkauth_input = {
 (async () => {
   await api.transact({
     actions: [{
-      account: 'eosio',
+      account: 'arisen',
       name: 'linkauth',
       authorization: [{
         actor: 'useraaaaaaaa',

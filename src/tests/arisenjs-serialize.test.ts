@@ -1,7 +1,7 @@
 const { TextEncoder, TextDecoder } = require('util');
 import { ec } from 'elliptic';
 
-import { createInitialTypes, Type, SerialBuffer } from '../eosjs-serialize';
+import { createInitialTypes, Type, SerialBuffer } from '../arisenjs-serialize';
 
 describe('Serialize', () => {
     let types: Map<string, Type>;
@@ -54,8 +54,8 @@ describe('Serialize', () => {
             });
         }
 
-        it('should be able to push asset with valid EOS symbol "10.000 EOS"', () => {
-            const asset = '10.000 EOS';
+        it('should be able to push asset with valid RIX symbol "10.000 RIX"', () => {
+            const asset = '10.000 RIX';
 
             serialBuffer.pushAsset(asset);
 
@@ -74,14 +74,14 @@ describe('Serialize', () => {
             expectExceptionThrown(asset);
         });
 
-        it('should not be able to push invalid lowercase symbol "10.000 eos"', () => {
-            const asset = '10.000 eos';
+        it('should not be able to push invalid lowercase symbol "10.000 rix"', () => {
+            const asset = '10.000 rix';
 
             expectExceptionThrown(asset);
         });
 
-        it('should not be able to push two symbols "10.000 EOS blah"', () => {
-            const asset = '10.000 EOS blah';
+        it('should not be able to push two symbols "10.000 RIX blah"', () => {
+            const asset = '10.000 RIX blah';
 
             expectExceptionThrown(asset);
         });

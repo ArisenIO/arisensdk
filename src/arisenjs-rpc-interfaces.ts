@@ -1,6 +1,6 @@
 /**
  * @module RPC-API-Methods
- * copyright defined in eosjs/LICENSE.txt
+ * copyright defined in arisensdk/LICENSE.txt
  */
 
 /** Structured format for abis */

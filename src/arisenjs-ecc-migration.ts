@@ -1,6 +1,6 @@
-import {PrivateKey, PublicKey, Signature} from './eosjs-jssig';
-import {generateKeyPair} from './eosjs-key-conversions';
-import {KeyType} from './eosjs-numeric';
+import {PrivateKey, PublicKey, Signature} from './arisenjs-jssig';
+import {generateKeyPair} from './arisenjs-key-conversions';
+import {KeyType} from './arisenjs-numeric';
 import {ec as EC} from 'elliptic';
 
 export const ecc = {
@@ -84,6 +84,6 @@ export const ecc = {
             console.warn('Argument `resultEncoding` is deprecated');
         }
 
-        return require('./eosjs-key-conversions').sha256(data);
+        return require('./arisenjs-key-conversions').sha256(data);
     }
 };

@@ -1,5 +1,5 @@
 const { JsonRpc, RpcError, Api } = require('../../dist');
-const { JsSignatureProvider } = require('../../dist/eosjs-jssig');
+const { JsSignatureProvider } = require('../../dist/arisensdk-jssig');
 const fetch = require('node-fetch');
 const { TextEncoder, TextDecoder } = require('util');
 
@@ -19,7 +19,7 @@ const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), te
 const transactWithConfig = async (config, memo, from = 'bob', to = 'alice') => {
     return await api.transact({
         actions: [{
-            account: 'eosio.token',
+            account: 'arisen.token',
             name: 'transfer',
             authorization: [{
                 actor: from,
@@ -28,7 +28,7 @@ const transactWithConfig = async (config, memo, from = 'bob', to = 'alice') => {
             data: {
                 from,
                 to,
-                quantity: '0.0001 SYS',
+                quantity: '0.0001 RIX',
                 memo,
             },
         }]
@@ -48,7 +48,7 @@ const transactWithoutConfig = async () => {
         ref_block_num: blockInfo.block_num & 0xffff,
         ref_block_prefix: blockInfo.ref_block_prefix,
         actions: [{
-            account: 'eosio.token',
+            account: 'arisen.token',
             name: 'transfer',
             authorization: [{
                 actor: 'bob',
@@ -57,7 +57,7 @@ const transactWithoutConfig = async () => {
             data: {
                 from: 'bob',
                 to: 'alice',
-                quantity: '0.0001 SYS',
+                quantity: '0.0001 RIX',
                 memo: 'transactWithoutConfig2',
             },
         }]
@@ -68,7 +68,7 @@ const broadcastResult = async (signaturesAndPackedTransaction) => await api.push
 
 const transactShouldFail = async () => await api.transact({
     actions: [{
-        account: 'eosio.token',
+        account: 'arisen.token',
         name: 'transfer',
         authorization: [{
             actor: 'bob',
@@ -77,7 +77,7 @@ const transactShouldFail = async () => await api.transact({
         data: {
             from: 'bob',
             to: 'alice',
-            quantity: '0.0001 SYS',
+            quantity: '0.0001 RIX',
             memo: '',
         },
     }]

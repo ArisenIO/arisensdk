@@ -1,14 +1,14 @@
-// eosjs-ecc stuff
-const ecc = require('eosjs-ecc');
+// arisensdk-ecc stuff
+const ecc = require('arisensdk-ecc');
 
 const { ec } = require('elliptic');
 
-const { Signature, PrivateKey, PublicKey, sha256 } = require('../eosjs-key-conversions');
+const { Signature, PrivateKey, PublicKey, sha256 } = require('../arisenjs-key-conversions');
 const {
     JsSignatureProvider,
-} = require('../eosjs-jssig');
-const { KeyType } = require('../eosjs-numeric');
-const { SignatureProviderArgs } = require('../eosjs-api-interfaces');
+} = require('../arisenjs-jssig');
+const { KeyType } = require('../arisenjs-numeric');
+const { SignatureProviderArgs } = require('../arisenjs-api-interfaces');
 
 describe('JsSignatureProvider', () => {
     const privateKeys = [
@@ -39,7 +39,7 @@ describe('JsSignatureProvider', () => {
 
     // These are simplified tests simply to verify a refactor didn't mess with existing code
 
-    it('(NOTE: sigs are different): ensure elliptic does what eosjs-ecc used to do', () => {
+    it('(NOTE: sigs are different): ensure elliptic does what arisensdk-ecc used to do', () => {
         const ellipticEc = new ec('secp256k1');
         for (let idx=0; idx<privateKeys.length; idx++) {
             const KPriv = privateKeys[idx];
@@ -77,7 +77,7 @@ describe('JsSignatureProvider', () => {
         }
     });
 
-    it('ensure elliptic verifies eosjs-ecc\'s Sigs', () => {
+    it('ensure elliptic verifies arisensdk-ecc\'s Sigs', () => {
         const ellipticEc = new ec('secp256k1');
         for (let idx=0; idx<privateKeys.length; idx++) {
             const KPriv = privateKeys[idx];
@@ -144,7 +144,7 @@ describe('JsSignatureProvider', () => {
         }
     });
 
-    it('ensure eosjs verifies eosjs-ecc\'s Sigs', () => {
+    it('ensure arisensdk verifies arisensdk-ecc\'s Sigs', () => {
         for (let idx=0; idx<privateKeys.length; idx++) {
             const KPriv = privateKeys[idx];
             const privateKey = PrivateKey.fromString(KPriv);
@@ -152,41 +152,41 @@ describe('JsSignatureProvider', () => {
             const dataAsString = 'some string';
 
             const eccHashedString = Buffer.from(ecc.sha256(dataAsString), 'hex');
-            const eosjsHashedStringAsBuffer = Buffer.from(sha256(dataAsString), 'hex');
-            expect(eccHashedString).toEqual(eosjsHashedStringAsBuffer);
+            const arisenjsHashedStringAsBuffer = Buffer.from(sha256(dataAsString), 'hex');
+            expect(eccHashedString).toEqual(arisenjsHashedStringAsBuffer);
 
             const eccSig = ecc.sign(dataAsString, KPriv, 'utf8');
 
-            const eosjsSig = Signature.fromString(eccSig);
+            const arisenjsSig = Signature.fromString(eccSig);
             const recoveredKPub = ecc.recover(eccSig, dataAsString, 'utf8');
-            const eosjsRecoveredKPub = eosjsSig.recover(dataAsString, true, 'utf8');
+            const arisenjsRecoveredKPub = arisenjsSig.recover(dataAsString, true, 'utf8');
 
-            expect(eosjsRecoveredKPub.toLegacyString()).toEqual(recoveredKPub);
-            expect(eosjsRecoveredKPub.toString()).toEqual(k1FormatPublicKeys[idx]);
+            expect(arisenjsRecoveredKPub.toLegacyString()).toEqual(recoveredKPub);
+            expect(arisenjsRecoveredKPub.toString()).toEqual(k1FormatPublicKeys[idx]);
 
-            const eosjsValid = eosjsSig.verify(dataAsString, eosjsRecoveredKPub, true, 'utf8');
-            expect(eosjsValid).toEqual(true);
+            const arisenjsValid = arisenjsSig.verify(dataAsString, arisenjsRecoveredKPub, true, 'utf8');
+            expect(arisenjsValid).toEqual(true);
         }
     });
 
-    it('ensure ecc verifies eosjs\'s Sigs', () => {
+    it('ensure ecc verifies arisensdk\'s Sigs', () => {
         for (let idx=0; idx<privateKeys.length; idx++) {
             const KPriv = privateKeys[idx];
             const privateKey = PrivateKey.fromString(KPriv);
 
             const dataAsString = 'some string';
 
-            const eosjsHashedStringAsBuffer = Buffer.from(sha256(dataAsString), 'hex');
+            const arisenjsHashedStringAsBuffer = Buffer.from(sha256(dataAsString), 'hex');
 
-            const eosjsSig = privateKey.sign(eosjsHashedStringAsBuffer, false, 'utf8');
-            const eosjsSigAsString = eosjsSig.toString();
+            const arisenjsSig = privateKey.sign(arisenjsHashedStringAsBuffer, false, 'utf8');
+            const arisenjsSigAsString = arisenjsSig.toString();
 
-            const recoveredKPub = ecc.recover(eosjsSigAsString, dataAsString, 'utf8');
-            const eosjsRecoveredKPub = eosjsSig.recover(dataAsString, true, 'utf8');
-            expect(eosjsRecoveredKPub.toLegacyString()).toEqual(recoveredKPub);
-            expect(eosjsRecoveredKPub.toString()).toEqual(k1FormatPublicKeys[idx]);
+            const recoveredKPub = ecc.recover(arisenjsSigAsString, dataAsString, 'utf8');
+            const arisenjsRecoveredKPub = arisenjsSig.recover(dataAsString, true, 'utf8');
+            expect(arisenjsRecoveredKPub.toLegacyString()).toEqual(recoveredKPub);
+            expect(arisenjsRecoveredKPub.toString()).toEqual(k1FormatPublicKeys[idx]);
 
-            const eccValid = ecc.verify(eosjsSigAsString, dataAsString, recoveredKPub, 'utf8');
+            const eccValid = ecc.verify(arisenjsSigAsString, dataAsString, recoveredKPub, 'utf8');
             expect(eccValid).toEqual(true);
         }
     });

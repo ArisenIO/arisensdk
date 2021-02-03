@@ -2,10 +2,10 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        eosjs_api: './src/eosjs-api.ts',
-        eosjs_jsonrpc: './src/rpc-web.ts',
-        eosjs_jssig: './src/eosjs-jssig.ts',
-        eosjs_numeric: './src/eosjs-numeric.ts',
+        arisenjs_api: './src/arisensdk-api.ts',
+        arisenjs_jsonrpc: './src/rpc-web.ts',
+        arisenjs_jssig: './src/arisensdk-jssig.ts',
+        arisenjs_numeric: './src/arisensdk-numeric.ts',
     },
     devtool: 'inline-source-map',
     mode: 'development',

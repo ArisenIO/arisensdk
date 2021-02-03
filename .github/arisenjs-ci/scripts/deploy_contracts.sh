@@ -15,10 +15,10 @@ R1_EXAMPLE_ACCOUNT_PRIVATE_KEY="PVT_R1_GrfEfbv5at9kbeHcGagQmvbFLdm6jqEpgE1wsGbrf
 R1_EXAMPLE_ACCOUNT_PUBLIC_KEY="PUB_R1_4ztaVy8L9zbmzTdpfq5GcaFYwGwXTNmN3qW7qcgHMmfUZhpzQQ"
 
 ROOT_DIR="/opt"
-CONTRACTS_DIR="$ROOT_DIR/eosio/bin/contracts"
+CONTRACTS_DIR="$ROOT_DIR/arisen/bin/contracts"
 BLOCKCHAIN_DATA_DIR=/root/.local/share
-BLOCKCHAIN_CONFIG_DIR=/opt/eosio/bin/config-dir
-WALLET_DIR="/root/eosio-wallet/"
+BLOCKCHAIN_CONFIG_DIR=/opt/arisen/bin/config-dir
+WALLET_DIR="/root/arisen-wallet/"
 
 mkdir -p $ROOT_DIR/bin
 
@@ -44,7 +44,7 @@ function post_preactivate {
 
 # $1 feature disgest to activate
 function activate_feature {
-  cleos push action eosio activate '["'"$1"'"]' -p eosio
+  cleos push action arisen activate '["'"$1"'"]' -p arisen
   if [ $? -ne 0 ]; then
     exit 1
   fi
@@ -102,7 +102,7 @@ function setabi {
 # $3 - private key
 function create_account {
   cleos wallet import --private-key $3
-  cleos create account eosio $1 $2
+  cleos create account arisen $1 $2
 }
 
 # Move into the executable directory
@@ -113,13 +113,13 @@ mkdir -p $BLOCKCHAIN_CONFIG_DIR
 
 if [ -z "$NODEOS_RUNNING" ]; then
   echo "Starting the chain for setup"
-  nodeos -e -p eosio \
+  nodeos -e -p arisen \
   --data-dir $BLOCKCHAIN_DATA_DIR \
   --config-dir $BLOCKCHAIN_CONFIG_DIR \
   --http-validate-host=false \
-  --plugin eosio::producer_api_plugin \
-  --plugin eosio::chain_api_plugin \
-  --plugin eosio::http_plugin \
+  --plugin arisen::producer_api_plugin \
+  --plugin arisen::chain_api_plugin \
+  --plugin arisen::http_plugin \
   --http-server-address=0.0.0.0:8888 \
   --access-control-allow-origin=* \
   --contracts-console \
@@ -149,36 +149,36 @@ post_preactivate
 
 sleep 1s
 cleos wallet unlock --password $(cat "$CONFIG_DIR"/keys/default_wallet_password.txt) || true
-setabi eosio $CONTRACTS_DIR/boot/boot.abi
-setcode eosio $CONTRACTS_DIR/boot/boot.wasm
+setabi arisen $CONTRACTS_DIR/boot/boot.abi
+setcode arisen $CONTRACTS_DIR/boot/boot.wasm
 sleep 2s
-cleos push action eosio boot "[]" -p eosio@active
+cleos push action arisen boot "[]" -p arisen@active
 
 sleep 1s
 cleos wallet unlock --password $(cat "$CONFIG_DIR"/keys/default_wallet_password.txt) || true
-setcode eosio $CONTRACTS_DIR/system/system.wasm
-setabi eosio $CONTRACTS_DIR/system/system.abi
+setcode arisen $CONTRACTS_DIR/system/system.wasm
+setabi arisen $CONTRACTS_DIR/system/system.abi
 
 # token
 sleep 1s
 cleos wallet unlock --password $(cat "$CONFIG_DIR"/keys/default_wallet_password.txt) || true
-create_account eosio.token $SYSTEM_ACCOUNT_PUBLIC_KEY $SYSTEM_ACCOUNT_PRIVATE_KEY
+create_account arisen.token $SYSTEM_ACCOUNT_PUBLIC_KEY $SYSTEM_ACCOUNT_PRIVATE_KEY
 create_account bob $EXAMPLE_ACCOUNT_PUBLIC_KEY $EXAMPLE_ACCOUNT_PRIVATE_KEY
 create_account alice $EXAMPLE_ACCOUNT_PUBLIC_KEY $EXAMPLE_ACCOUNT_PRIVATE_KEY
 create_account bobr1 $R1_EXAMPLE_ACCOUNT_PUBLIC_KEY $R1_EXAMPLE_ACCOUNT_PRIVATE_KEY
 create_account alicer1 $R1_EXAMPLE_ACCOUNT_PUBLIC_KEY $R1_EXAMPLE_ACCOUNT_PRIVATE_KEY
 
 sleep 1s
-cleos set abi eosio.token $CONTRACTS_DIR/token/token.abi -p eosio.token@active -p eosio@active
-cleos set code eosio.token $CONTRACTS_DIR/token/token.wasm -p eosio.token@active -p eosio@active
+cleos set abi arisen.token $CONTRACTS_DIR/token/token.abi -p arisen.token@active -p arisen@active
+cleos set code arisen.token $CONTRACTS_DIR/token/token.wasm -p arisen.token@active -p arisen@active
 
-cleos push action eosio.token create '["bob", "10000000000.0000 SYS"]' -p eosio.token
-cleos push action eosio.token issue '["bob", "5000000000.0000 SYS", "Half of available supply"]' -p bob
-cleos push action eosio.token transfer '["bob", "alice", "1000000.0000 SYS", "memo"]' -p bob
-cleos push action eosio.token transfer '["bob", "bobr1", "1000000.0000 SYS", "memo"]' -p bob
-cleos push action eosio.token transfer '["bob", "alicer1", "1000000.0000 SYS", "memo"]' -p bob
+cleos push action arisen.token create '["bob", "10000000000.0000 RIX"]' -p arisen.token
+cleos push action arisen.token issue '["bob", "5000000000.0000 RIX", "Half of available supply"]' -p bob
+cleos push action arisen.token transfer '["bob", "alice", "1000000.0000 RIX", "memo"]' -p bob
+cleos push action arisen.token transfer '["bob", "bobr1", "1000000.0000 RIX", "memo"]' -p bob
+cleos push action arisen.token transfer '["bob", "alicer1", "1000000.0000 RIX", "memo"]' -p bob
 
-cleos push action eosio init "[]" -p eosio@active
+cleos push action arisen init "[]" -p arisen@active
 
 echo "All done initializing the blockchain"
 

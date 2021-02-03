@@ -1,4 +1,4 @@
-In order to deploy a smart contract using `eosjs`, call the [`setcode`](https://github.com/EOSIO/eosio.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/eosio.system/include/eosio.system/native.hpp#L294) followed by the [`setabi`](https://github.com/EOSIO/eosio.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/eosio.system/include/eosio.system/native.hpp#L281) actions of the `eosio` account.
+In order to deploy a smart contract using `arisensdk`, call the [`setcode`](https://github.com/ARISENIO/arisen.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/arisen.system/include/arisen.system/native.hpp#L294) followed by the [`setabi`](https://github.com/ARISENIO/arisen.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/arisen.system/include/arisen.system/native.hpp#L281) actions of the `arisen` account.
 
 ## setcode
 `setcode` takes the name of the account where the smart contract will be deployed to and the smart contract **.wasm** file.  The smart contract **.wasm** file should be a hex string.  Assuming that a valid **.wasm** file is located at `/mypath/my_smart_contract.wasm`, converting a smart contract to a hex string can be accomplished using the code below.
@@ -11,7 +11,7 @@ const wasmHexString = fs.readFileSync(wasmFilePath).toString('hex')
 In the example shown below `useraaaaaaaa` sets the account `useraaaaaaaa`'s code to the smart contract located at `/mypath/my_smart_contract.wasm`'s hex string representation. 
 ```javascript
         {
-          account: 'eosio',
+          account: 'arisen',
           name: 'setcode',
           authorization: [
             {
@@ -49,7 +49,7 @@ abiJSON = abiDefinitions.fields.reduce(
 abiDefinitions.serialize(buffer, abiJSON)
 serializedAbiHexString = Buffer.from(buffer.asUint8Array()).toString('hex')
 ```
-Note that the `api` object from [initialization](../basic-usage/01_commonjs.md) is used for it's `textEncoder`and `textDecoder` objects, as well as it's [`abiTypes`](https://github.com/EOSIO/eosjs/blob/849c03992e6ce3cb4b6a11bf18ab17b62136e5c9/src/eosjs-api.ts#L72) map.
+Note that the `api` object from [initialization](../basic-usage/01_commonjs.md) is used for it's `textEncoder`and `textDecoder` objects, as well as it's [`abiTypes`](https://github.com/ARISENIO/arisensdk/blob/849c03992e6ce3cb4b6a11bf18ab17b62136e5c9/src/arisensdk-api.ts#L72) map.
 
 This line in particular:
 ```javascript
@@ -59,7 +59,7 @@ abiJSON = abiDefinitions.fields.reduce(
         abiJSON
     )
 ```
-ensures that the **.abi** file contains [the fields that an **.abi** file is expected to contain](https://github.com/EOSIO/eosjs/blob/849c03992e6ce3cb4b6a11bf18ab17b62136e5c9/src/abi.abi.json#L151).  Note that if an expected field is missing, the call to `serialize` will [throw an exception](https://github.com/EOSIO/eosjs/blob/849c03992e6ce3cb4b6a11bf18ab17b62136e5c9/src/eosjs-serialize.ts#L644) indicating the missing field.
+ensures that the **.abi** file contains [the fields that an **.abi** file is expected to contain](https://github.com/ARISENIO/arisensdk/blob/849c03992e6ce3cb4b6a11bf18ab17b62136e5c9/src/abi.abi.json#L151).  Note that if an expected field is missing, the call to `serialize` will [throw an exception](https://github.com/ARISENIO/arisensdk/blob/849c03992e6ce3cb4b6a11bf18ab17b62136e5c9/src/arisensdk-serialize.ts#L644) indicating the missing field.
 
 ## Deploying a Smart Contract
 Below the two actions are submitted as one transaction using the `Api` object.
@@ -68,7 +68,7 @@ Below the two actions are submitted as one transaction using the `Api` object.
   await api.transact({
       actions: [
         {
-          account: 'eosio',
+          account: 'arisen',
           name: 'setcode',
           authorization: [
             {
@@ -82,7 +82,7 @@ Below the two actions are submitted as one transaction using the `Api` object.
           },
         },
         {
-          account: 'eosio',
+          account: 'arisen',
           name: 'setabi',
           authorization: [
             {
@@ -130,7 +130,7 @@ await api.transact(
     {
       actions: [
         {
-          account: 'eosio',
+          account: 'arisen',
           name: 'setcode',
           authorization: [
             {
@@ -144,7 +144,7 @@ await api.transact(
           },
         },
         {
-          account: 'eosio',
+          account: 'arisen',
           name: 'setabi',
           authorization: [
             {

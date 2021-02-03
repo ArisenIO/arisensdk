@@ -1,7 +1,7 @@
-const ecc = require('eosjs-ecc');
-import { ecc as eccMigration } from '../eosjs-ecc-migration';
+const ecc = require('arisensdk-ecc');
+import { ecc as eccMigration } from '../arisenjs-ecc-migration';
 
-import { PrivateKey } from '../eosjs-key-conversions';
+import { PrivateKey } from '../arisenjs-key-conversions';
 
 describe('ecc Migration', () => {
     const privateKeys = [
@@ -44,8 +44,8 @@ describe('ecc Migration', () => {
 
     it('verifies `privateToPublic` function is consistent between ecc objects', () => {
         console.warn = jest.fn();
-        const eccPublicKey = ecc.privateToPublic(privateKeys[0], 'EOS');
-        const eccMigrationPublicKey = eccMigration.privateToPublic(privateKeys[0], 'EOS');
+        const eccPublicKey = ecc.privateToPublic(privateKeys[0], 'RSN');
+        const eccMigrationPublicKey = eccMigration.privateToPublic(privateKeys[0], 'RSN');
         expect(console.warn).toHaveBeenCalledWith('Argument `pubkey_prefix` is deprecated, ' +
             'keys prefixed with PUB_K1_/PUB_R1_/PUB_WA_ going forward');
         expect(eccPublicKey).toEqual(eccMigrationPublicKey);
@@ -53,8 +53,8 @@ describe('ecc Migration', () => {
 
     it('verifies `isValidPublic` function is consistent between ecc objects', () => {
         console.warn = jest.fn();
-        const eccValid = ecc.isValidPublic(legacyPublicKeys[0], 'EOS');
-        const eccMigrationValid = eccMigration.isValidPublic(legacyPublicKeys[0], 'EOS');
+        const eccValid = ecc.isValidPublic(legacyPublicKeys[0], 'RSN');
+        const eccMigrationValid = eccMigration.isValidPublic(legacyPublicKeys[0], 'RSN');
         expect(console.warn).toHaveBeenCalledWith('Argument `pubkey_prefix` is deprecated, ' +
             'keys prefixed with PUB_K1_/PUB_R1_/PUB_WA_ going forward');
         expect(eccValid).toEqual(eccMigrationValid);
@@ -64,8 +64,8 @@ describe('ecc Migration', () => {
 
     it('verifies `isValidPublic` function is consistent during an error', () => {
         console.warn = jest.fn();
-        const eccValid = ecc.isValidPublic('publickey', 'EOS');
-        const eccMigrationValid = eccMigration.isValidPublic('publickey', 'EOS');
+        const eccValid = ecc.isValidPublic('publickey', 'RSN');
+        const eccMigrationValid = eccMigration.isValidPublic('publickey', 'RSN');
         expect(console.warn).toHaveBeenCalledWith('Argument `pubkey_prefix` is deprecated, ' +
             'keys prefixed with PUB_K1_/PUB_R1_/PUB_WA_ going forward');
         expect(eccValid).toEqual(eccMigrationValid);

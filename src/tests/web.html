@@ -2,9 +2,9 @@
 <html>
     <head>
         <link rel='stylesheet' type='text/css' href='web.css'>
-        <script src='../../dist-web/eosjs-api.min.js'></script>
-        <script src='../../dist-web/eosjs-jsonrpc.min.js'></script>
-        <script src='../../dist-web/eosjs-jssig.min.js'></script>
+        <script src='../../dist-web/arisensdk-api.min.js'></script>
+        <script src='../../dist-web/arisensdk-jsonrpc.min.js'></script>
+        <script src='../../dist-web/arisensdk-jssig.min.js'></script>
         <script>
             const privateKey = '5JuH9fCXmU3xbj8nRmhPZaVrxxXrdPaRmZLW1cznNTmTQR2Kg5Z'; // replace with 'bob' account private key
             const r1PrivateKey = 'PVT_R1_GrfEfbv5at9kbeHcGagQmvbFLdm6jqEpgE1wsGbrfbZNjpVgT'
@@ -15,9 +15,9 @@
             * 4) cleos create account alice publicKey
             */
         
-            const rpc = new eosjs_jsonrpc.JsonRpc('http://localhost:8888');
-            const signatureProvider = new eosjs_jssig.JsSignatureProvider([privateKey, r1PrivateKey]);
-            const api = new eosjs_api.Api({ rpc, signatureProvider });
+            const rpc = new arisenjs_jsonrpc.JsonRpc('http://localhost:8888');
+            const signatureProvider = new arisenjs_jssig.JsSignatureProvider([privateKey, r1PrivateKey]);
+            const api = new arisenjs_api.Api({ rpc, signatureProvider });
         
             const EXECUTING = 'Executing Test', SUCCESS = 'Success', FAILED = 'Failed';
             let resultsLabel, transactionResponse, transactionSignatures, failedAsPlanned;
@@ -25,7 +25,7 @@
             const transactWithConfig = async (config, memo, from = 'bob', to = 'alice') => {
               return api.transact({
                 actions: [{
-                  account: 'eosio.token',
+                  account: 'arisen.token',
                   name: 'transfer',
                   authorization: [{
                     actor: from,
@@ -34,7 +34,7 @@
                   data: {
                     from,
                     to,
-                    quantity: '0.0001 SYS',
+                    quantity: '0.0001 RIX',
                     memo,
                   },
                 }]
@@ -100,7 +100,7 @@
                     ref_block_num: blockInfo.block_num & 0xffff,
                     ref_block_prefix: blockInfo.ref_block_prefix,
                     actions: [{
-                        account: 'eosio.token',
+                        account: 'arisen.token',
                         name: 'transfer',
                         authorization: [{
                             actor: 'bob',
@@ -109,7 +109,7 @@
                         data: {
                             from: 'bob',
                             to: 'alice',
-                            quantity: '0.0001 SYS',
+                            quantity: '0.0001 RIX',
                             memo: 'transactWithoutConfig2',
                         },
                     }]
@@ -239,7 +239,7 @@
         
             const transactShouldFail = async () => await api.transact({
                 actions: [{
-                    account: 'eosio.token',
+                    account: 'arisen.token',
                     name: 'transfer',
                     authorization: [{
                         actor: 'bob',
@@ -248,7 +248,7 @@
                     data: {
                         from: 'bob',
                         to: 'alice',
-                        quantity: '0.0001 SYS',
+                        quantity: '0.0001 RIX',
                         memo: '',
                     },
                 }]
@@ -281,7 +281,7 @@
                 try {
                     await rpcShouldFail();
                 } catch (e) {
-                    if (e instanceof eosjs_jsonrpc.RpcError) {
+                    if (e instanceof arisenjs_jsonrpc.RpcError) {
                         resultsLabel.className = "success";
                         resultsLabel.innerText = SUCCESS;
                         return true;

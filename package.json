@@ -1,6 +1,6 @@
 {
-  "name": "eosjs",
-  "version": "21.0.3",
+  "name": "arisensdk",
+  "version": "1.0.0",
   "description": "Talk to eos API",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "cypress-ui": "cypress open",
     "prepare": "npm run build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
-    "test": "jest src/tests/*eosjs*",
+    "test": "jest src/tests/*arisensdk*",
     "test-node": "jest src/tests/*node*",
     "test-all": "yarn test && yarn test-node && yarn cypress",
     "build": "rm -rf dist && tsc -p ./tsconfig.json && node scripts/copy-ripe-md.js",
@@ -19,11 +19,11 @@
     "docs-serve": "python -m SimpleHTTPServer",
     "docs-publish": "sh .docs/scripts/publish.sh"
   },
-  "author": "block.one",
+  "author": "peeps",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/EOSIO/eosjs.git"
+    "url": "https://github.com/ARISENIO/arisensdk.git"
   },
   "dependencies": {
     "elliptic": "6.5.3",
@@ -37,7 +37,7 @@
     "@types/node": "^14.0.27",
     "@types/pako": "^1.0.1",
     "cypress": "^4.12.1",
-    "eosjs-ecc": "^4.0.7",
+    "@arisencore/ecc": "1.0.1",
     "eslint": "^6.8.0",
     "jest": "^26.3.0",
     "jest-fetch-mock": "^3.0.3",

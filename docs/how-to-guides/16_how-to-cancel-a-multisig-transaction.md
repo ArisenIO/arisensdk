@@ -1,11 +1,11 @@
-To cancel a multi-sig transaction, [submit a transaction](01_how-to-submit-a-transaction.md) to the [`cancel`](https://github.com/EOSIO/eosio.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/eosio.msig/include/eosio.msig/eosio.msig.hpp#L88) action of the `eosio.msig` account.
+To cancel a multi-sig transaction, [submit a transaction](01_how-to-submit-a-transaction.md) to the [`cancel`](https://github.com/ARISENIO/arisen.contracts/blob/52fbd4ac7e6c38c558302c48d00469a4bed35f7c/contracts/arisen.msig/include/arisen.msig/arisen.msig.hpp#L88) action of the `arisen.msig` account.
 
 In the example shown below `useraaaaaaaa` cancels the `changeowner` proposal, previously proposed by `useraaaaaaaa`.
 ```javascript
 (async () => {
   await api.transact({
     actions: [{
-      account: 'eosio.msig',
+      account: 'arisen.msig',
       name: 'cancel',
       authorization: [{
         actor: 'useraaaaaaaa',

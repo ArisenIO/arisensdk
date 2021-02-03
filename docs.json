@@ -1,5 +1,5 @@
 {
-	"name": "eosjs",
+	"name": "arisensdk",
 	"generators": [
 		{
 			"name": "collate_markdown",

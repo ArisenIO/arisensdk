@@ -1,9 +1,9 @@
-import { Api } from './eosjs-api';
-import * as ApiInterfaces from './eosjs-api-interfaces';
-import { JsonRpc } from './eosjs-jsonrpc';
-import * as Numeric from './eosjs-numeric';
-import * as RpcInterfaces from './eosjs-rpc-interfaces';
-import { RpcError } from './eosjs-rpcerror';
-import * as Serialize from './eosjs-serialize';
+import { Api } from './arisenjs-api';
+import * as ApiInterfaces from './arisenjs-api-interfaces';
+import { JsonRpc } from './arisenjs-jsonrpc';
+import * as Numeric from './arisenjs-numeric';
+import * as RpcInterfaces from './arisenjs-rpc-interfaces';
+import { RpcError } from './arisenjs-rpcerror';
+import * as Serialize from './arisenjs-serialize';
 
 export { Api, ApiInterfaces, JsonRpc, Numeric, RpcInterfaces, RpcError, Serialize };

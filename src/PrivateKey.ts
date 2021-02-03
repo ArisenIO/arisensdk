@@ -5,8 +5,8 @@ import {
     privateKeyToLegacyString,
     privateKeyToString,
     stringToPrivateKey,
-} from './eosjs-numeric';
-import { constructElliptic, PublicKey, Signature } from './eosjs-key-conversions';
+} from './arisenjs-numeric';
+import { constructElliptic, PublicKey, Signature } from './arisenjs-key-conversions';
 
 /** Represents/stores a private key and provides easy conversion for use with `elliptic` lib */
 export class PrivateKey {
@@ -23,7 +23,7 @@ export class PrivateKey {
         }, ec);
     }
 
-    /** Instantiate private key from an EOSIO-format private key */
+    /** Instantiate private key from an ARISEN-format private key */
     public static fromString(keyString: string, ec?: EC): PrivateKey {
         const privateKey = stringToPrivateKey(keyString);
         if (!ec) {
@@ -41,7 +41,7 @@ export class PrivateKey {
         return privateKeyToLegacyString(this.key);
     }
 
-    /** Export private key as EOSIO-format private key */
+    /** Export private key as ARISEN-format private key */
     public toString(): string {
         return privateKeyToString(this.key);
     }

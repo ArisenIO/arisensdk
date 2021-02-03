@@ -1,4 +1,4 @@
-import { JsonRpc } from './eosjs-jsonrpc';
-import { RpcError } from './eosjs-rpcerror';
+import { JsonRpc } from './arisenjs-jsonrpc';
+import { RpcError } from './arisenjs-rpcerror';
 
 export { JsonRpc, RpcError };

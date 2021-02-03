@@ -6,14 +6,14 @@ import {
     KeyType,
     signatureToString,
     stringToSignature,
-} from './eosjs-numeric';
-import { constructElliptic, PublicKey } from './eosjs-key-conversions';
+} from './arisenjs-numeric';
+import { constructElliptic, PublicKey } from './arisenjs-key-conversions';
 
 /** Represents/stores a Signature and provides easy conversion for use with `elliptic` lib */
 export class Signature {
     constructor(private signature: Key, private ec: EC) {}
 
-    /** Instantiate Signature from an EOSIO-format Signature */
+    /** Instantiate Signature from an ARISEN-format Signature */
     public static fromString(sig: string, ec?: EC): Signature {
         const signature = stringToSignature(sig);
         if (!ec) {
@@ -70,7 +70,7 @@ export class Signature {
         return { r, s, recoveryParam };
     }
 
-    /** Export Signature as EOSIO-format Signature */
+    /** Export Signature as ARISEN-format Signature */
     public toString(): string {
         return signatureToString(this.signature);
     }

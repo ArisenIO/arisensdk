@@ -1,10 +1,10 @@
 /**
  * @module JSON-RPC
  */
-// copyright defined in eosjs/LICENSE.txt
+// copyright defined in arisensdk/LICENSE.txt
 
-import { AbiProvider, AuthorityProvider, AuthorityProviderArgs, BinaryAbi } from './eosjs-api-interfaces';
-import { base64ToBinary, convertLegacyPublicKeys } from './eosjs-numeric';
+import { AbiProvider, AuthorityProvider, AuthorityProviderArgs, BinaryAbi } from './arisenjs-api-interfaces';
+import { base64ToBinary, convertLegacyPublicKeys } from './arisenjs-numeric';
 import {
     GetAbiResult,
     GetBlockResult,
@@ -13,8 +13,8 @@ import {
     GetRawCodeAndAbiResult,
     PushTransactionArgs,
     GetBlockHeaderStateResult
-} from './eosjs-rpc-interfaces';
-import { RpcError } from './eosjs-rpcerror';
+} from './arisenjs-rpc-interfaces';
+import { RpcError } from './arisenjs-rpcerror';
 
 const arrayToHex = (data: Uint8Array) => {
     let result = '';

@@ -28,7 +28,7 @@ For example, the below request would cause the above exception, since the `autho
 (async () => {
   await api.transact({
    actions: [{
-     account: 'eosio',
+     account: 'arisen',
      name: 'buyrambytes',
      data: {
        payer: 'useraaaaaaaa',

@@ -1,4 +1,4 @@
-describe('eosjs web test', () => {
+describe('arisensdk web test', () => {
   it('loads', () => {
     cy.visit(('./src/tests/web.html'));
   });

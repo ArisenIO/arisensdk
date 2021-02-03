@@ -1,7 +1,7 @@
-To import `eosjs` using commonjs syntax follow the code below.
+To import `arisensdk` using commonjs syntax follow the code below.
 ```javascript
-const { Api, JsonRpc } = require('eosjs');
-const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig');  // development only
+const { Api, JsonRpc } = require('arisensdk');
+const { JsSignatureProvider } = require('arisensdk/dist/arisensdk-jssig');  // development only
 const fetch = require('node-fetch'); //node only
 const { TextDecoder, TextEncoder } = require('util'); //node only
 

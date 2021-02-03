@@ -1,19 +1,19 @@
-# eosjs
-[![Build Status](https://github.com/eosio/eosjs/workflows/CI/badge.svg?branch=master)](https://github.com/EOSIO/eosjs/actions)  [![npm version](https://badge.fury.io/js/eosjs.svg)](https://badge.fury.io/js/eosjs)  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  ![npm](https://img.shields.io/npm/dw/eosjs.svg)
+# arisensdk
+[![Build Status](https://github.com/arisenio/arisensdk/workflows/CI/badge.svg?branch=master)](https://github.com/ARISENIO/arisensdk/actions)  [![npm version](https://badge.fury.io/js/arisensdk.svg)](https://badge.fury.io/js/arisensdk)  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  ![npm](https://img.shields.io/npm/dw/arisensdk.svg)
 
-Javascript API for integration with EOSIO-based blockchains using [EOSIO RPC API](https://developers.eos.io/eosio-nodeos/reference).
+Javascript API for integration with ARISEN-based blockchains using [ARISEN RPC API](https://developers.eos.io/arisen-aos/reference).
 
-Documentation can be found [here](https://eosio.github.io/eosjs)
+Documentation can be found [here](https://arisenio.github.io/arisensdk)
 
 ## Installation
 
 ### NPM
 
-The official distribution package can be found at [npm](https://www.npmjs.com/package/eosjs).
+The official distribution package can be found at [npm](https://www.npmjs.com/package/arisensdk).
 
 ### Add dependency to your project
 
-`yarn add eosjs`
+`yarn add arisensdk`
 
 ### Using with Typescript
 
@@ -32,7 +32,7 @@ If you're using Node (not a browser) then you'll also need to make sure the `dom
 
 ### Browser Distribution
 
-Clone this repository locally then run `yarn build-web`.  The browser distribution will be located in `dist-web` and can be directly copied into your project repository. The `dist-web` folder contains minified bundles ready for production, along with source mapped versions of the library for debugging.  For full browser usage examples, [see the documentation](https://eosio.github.io/eosjs/guides/1.-Browsers.html).
+Clone this repository locally then run `yarn build-web`.  The browser distribution will be located in `dist-web` and can be directly copied into your project repository. The `dist-web` folder contains minified bundles ready for production, along with source mapped versions of the library for debugging.  For full browser usage examples, [see the documentation](https://arisenio.github.io/arisensdk/guides/1.-Browsers.html).
 
 ## Import
 
@@ -40,16 +40,16 @@ Clone this repository locally then run `yarn build-web`.  The browser distributi
 
 Importing using ESM syntax is supported using TypeScript, [webpack](https://webpack.js.org/api/module-methods), or  [Node.js with `--experimental-modules` flag](https://nodejs.org/api/esm.html)
 ```js
-import { Api, JsonRpc, RpcError } from 'eosjs';
-import { JsSignatureProvider } from 'eosjs/dist/eosjs-jssig';           // development only
+import { Api, JsonRpc, RpcError } from 'arisensdk';
+import { JsSignatureProvider } from 'arisensdk/dist/arisensdk-jssig';           // development only
 ```
 
 ### CommonJS
 
 Importing using commonJS syntax is supported by Node.js out of the box.
 ```js
-const { Api, JsonRpc, RpcError } = require('eosjs');
-const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig');      // development only
+const { Api, JsonRpc, RpcError } = require('arisensdk');
+const { JsSignatureProvider } = require('arisensdk/dist/arisensdk-jssig');      // development only
 const fetch = require('node-fetch');                                    // node only; not needed in browsers
 const { TextEncoder, TextDecoder } = require('util');                   // node only; native TextEncoder/Decoder
 ```
@@ -89,7 +89,7 @@ const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), te
 (async () => {
   const result = await api.transact({
     actions: [{
-      account: 'eosio.token',
+      account: 'arisen.token',
       name: 'transfer',
       authorization: [{
         actor: 'useraaaaaaaa',
@@ -98,7 +98,7 @@ const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), te
       data: {
         from: 'useraaaaaaaa',
         to: 'useraaaaaaab',
-        quantity: '0.0001 SYS',
+        quantity: '0.0001 RIX',
         memo: '',
       },
     }]
