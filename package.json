@@ -1,7 +1,7 @@
 {
   "name": "arisensdk",
-  "version": "1.0.1",
-  "description": "Talk to eos API",
+  "version": "1.0.2",
+  "description": "Talk to arisen API",
   "main": "dist/index.js",
   "scripts": {
     "cypress": "cypress run --spec 'cypress/integration/index.spec.js'",
