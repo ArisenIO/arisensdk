@@ -1,7 +1,7 @@
 # arisensdk
 [![Build Status](https://github.com/arisenio/arisensdk/workflows/CI/badge.svg?branch=master)](https://github.com/ARISENIO/arisensdk/actions)  [![npm version](https://badge.fury.io/js/arisensdk.svg)](https://badge.fury.io/js/arisensdk)  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  ![npm](https://img.shields.io/npm/dw/arisensdk.svg)
 
-Javascript API for integration with ARISEN-based blockchains using [ARISEN RPC API](https://developers.eos.io/arisen-aos/reference).
+Javascript API for integration with ARISEN-based blockchains using [ARISEN RPC API](https://docs.arisen.network/docs/aos-rpc-api-reference).
 
 Documentation can be found [here](https://arisenio.github.io/arisensdk)
 
